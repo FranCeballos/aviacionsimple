@@ -7,7 +7,7 @@ function HeadComponent(props) {
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#D6DBDC" />
         <meta
           name="format-detection"
           content="telephone=no, date=no, email=no, address=no"
