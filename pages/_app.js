@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import { Inter } from "next/font/google";
-
+import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }) {
@@ -11,7 +11,8 @@ export default function App({ Component, pageProps }) {
           font-family: ${inter.style.fontFamily};
         }
       `}</style>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
+      <Analytics />
     </>
   );
 }
