@@ -3,9 +3,11 @@
   height: var(--header-hight);
   padding: 0 8vw;
   position: fixed;
-  top: 30px;
+  top: 0;
   left: 0;
   z-index: 9;
+  background-color: rgba(255, 255, 255, 0.342);
+  backdrop-filter: blur(14px);
 }
 
 .content {
@@ -13,14 +15,10 @@
   max-width: 1200px;
   height: 100%;
   margin: 0 auto;
-  padding: 0 20px;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  background-color: #fff;
-  border-radius: var(--border-radius);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.178);
 }
 
 .logo__container {
@@ -39,8 +37,8 @@
 }
 
 .logo__text {
-  font-size: 1.1rem;
   color: var(--main-dark-color);
+  font-size: 1.2rem;
   margin-left: 10px;
   font-variation-settings: "wght" 800;
 }
