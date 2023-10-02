@@ -17,15 +17,6 @@ const BenefitsItem = ({
   return (
     <ScaleInView ref={ref}>
       <motion.div ref={ref} className={classes.container}>
-        {/* <div className={classes["image__container"]}>
-        <Image
-          className={classes.image}
-          src={`/assets/img/backgrounds/${imageSrc}`}
-          width={300}
-          height={300}
-          alt={title}
-        />
-      </div> */}
         <div className={classes.content}>
           <div className={classes.icon}>{icon}</div>
           <h3 className={classes.title}>{title}</h3>

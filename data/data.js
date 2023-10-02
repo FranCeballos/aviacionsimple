@@ -52,3 +52,14 @@ export const benefitsData = [
     linkTitle: "Consultá precios",
   },
 ];
+
+export const imagesURLs = [
+  "/assets/img/gallery/gallery1.webp",
+  "/assets/img/gallery/gallery2.webp",
+  "/assets/img/gallery/gallery3.webp",
+  "/assets/img/gallery/gallery4.webp",
+  "/assets/img/gallery/gallery5.webp",
+  "/assets/img/gallery/gallery6.webp",
+  "/assets/img/gallery/gallery7.webp",
+  "/assets/img/gallery/gallery8.webp",
+];

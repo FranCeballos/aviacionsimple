@@ -1,5 +1,6 @@
 .title {
   color: var(--main-dark-color);
+  place-self: center;
 }
 
 .airplane__container {
