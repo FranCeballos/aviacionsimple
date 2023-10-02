@@ -1,6 +1,6 @@
 :root {
   --max-width: 1100px;
-  --border-radius: 10px;
+  --border-radius: 14px;
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -35,6 +35,10 @@ body {
   color: rgb(var(--foreground-rgb));
   background: #ffffff;
   overflow-x: hidden;
+}
+
+h2 {
+  font-size: 3rem;
 }
 
 a {

@@ -1,0 +1,21 @@
+.title {
+  color: var(--main-dark-color);
+}
+
+.airplane__container {
+  height: 40px;
+  aspect-ratio: 1;
+  margin-bottom: 20px;
+  place-self: start;
+}
+
+.airplane {
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 425px) {
+  .airplane__container {
+    place-self: center;
+  }
+}
