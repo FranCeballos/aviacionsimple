@@ -1,0 +1,19 @@
+.title {
+  color: var(--acad-main-dark);
+  margin-bottom: 100px;
+}
+
+.link {
+  max-width: 300px;
+  background-color: var(--acad-main-dark);
+  color: #fff;
+  aspect-ratio: 1;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}

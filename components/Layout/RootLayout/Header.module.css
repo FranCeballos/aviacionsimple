@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  height: var(--header-hight);
+  height: var(--header-height);
   padding: 0 8vw;
   position: fixed;
   top: 0;

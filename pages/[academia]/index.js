@@ -2,6 +2,7 @@ import React from "react";
 import MainLayout from "@/components/Layout/AcademyLayout/MainLayout";
 import HeadComponent from "@/components/Head/Head";
 import Hero from "@/components/Academy/Home/Hero";
+import PlatformSelector from "@/components/Academy/Home/PlatformSelector/PlatformSelector";
 
 const AcademyHome = (props) => {
   return (
@@ -12,6 +13,7 @@ const AcademyHome = (props) => {
       />
       <MainLayout>
         <Hero />
+        <PlatformSelector />
       </MainLayout>
       ;
     </>

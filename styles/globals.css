@@ -6,17 +6,17 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
-  --header-hight: 60px;
+  --header-height: 60px;
 
   --main-dark-color: #112d4e;
   --secondary-dark-color: #3f72af;
   --main-light-color: #f9f7f7;
   --secondary-light-color: #dbe2ef;
-  --thistle: #dbc0e3ff;
-  --uranian-blue: #aed7f0ff;
-  --jordy-blue: #9ebee9ff;
-  --glaucous: #4f78c0ff;
-  --yinmn-blue: #2d4880ff;
+
+  --acad-main-dark: #113946;
+  --acad-secondary-dark: #bca37f;
+  --acad-main-light: #fff2d8;
+  --acad-secondary-light: #ead7bb;
 }
 
 * {
