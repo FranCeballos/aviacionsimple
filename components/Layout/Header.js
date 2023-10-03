@@ -20,7 +20,7 @@ const Header = (props) => {
         <div className={classes["logo__container"]}>
           <Image
             className={classes.logo}
-            src="/assets/img/logos/logo.png"
+            src="/assets/svg/logo.svg"
             width={100}
             height={100}
             alt="Logo image"
