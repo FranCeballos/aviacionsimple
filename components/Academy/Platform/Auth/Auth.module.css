@@ -1,0 +1,27 @@
+.container {
+  width: 100%;
+  height: 100vh;
+}
+
+.image__container {
+  display: none;
+  width: 100%;
+  height: 100vh;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+  .image__container {
+    display: block;
+  }
+}
