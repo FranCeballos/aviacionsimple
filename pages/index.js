@@ -1,5 +1,5 @@
 import HeadComponent from "@/components/Head/Head";
-import MainLayout from "@/components/Layout/MainLayout";
+import MainLayout from "@/components/Layout/RootLayout/MainLayout";
 import Benefits from "@/components/RootPage/Benefits/Benefits";
 import Gallery from "@/components/RootPage/Gallery/Gallery";
 import Hero from "@/components/RootPage/Hero";
