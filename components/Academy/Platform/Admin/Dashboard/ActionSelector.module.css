@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  max-width: 650px;
+  height: 70px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--acad-main-dark);
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.216);
+}

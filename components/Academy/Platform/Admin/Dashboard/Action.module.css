@@ -1,0 +1,42 @@
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+}
+
+.icon {
+  display: none;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  color: var(--main-dark-color);
+  transition: all 0.3s ease-out;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--main-dark-color);
+}
+
+.active {
+  background-color: rgb(20, 128, 118);
+}
+
+.activeContent {
+  color: #fff;
+}
+
+@media screen and (min-width: 425px) {
+  .icon {
+    display: block;
+  }
+}

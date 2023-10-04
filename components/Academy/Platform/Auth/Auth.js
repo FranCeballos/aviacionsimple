@@ -13,6 +13,7 @@ const Auth = (props) => {
           quality={20}
           width={1920}
           height={2880}
+          alt="Airplane in a blue sky"
         />
       </div>
       <LoginForm title="Plataforma Educativa" description="IV Brigada Aérea" />
