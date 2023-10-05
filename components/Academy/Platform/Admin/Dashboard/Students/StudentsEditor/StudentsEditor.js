@@ -1,29 +1,25 @@
 import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import PlusCircleIcon from "@/components/UI/Icons/PlusCircleIcon";
-import classes from "./ClassroomEditor.module.css";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import XCircleIcon from "@/components/UI/Icons/XCircleIcon";
-import AddClassroom from "./AddClassroom";
+import PlusCircleIcon from "@/components/UI/Icons/PlusCircleIcon";
+import classes from "./StudentsEditor.module.css";
+import AddStudent from "./AddStudent";
 
-const ClassroomEditor = (props) => {
+const StudentsEditor = (props) => {
   const {
     query: { crear },
   } = useRouter();
-  const isCreateMode = crear === "curso";
+  const isCreateMode = crear === "alumno";
   return (
-    <div className={classes.container}>
+    <motion.div className={classes.container}>
       <AnimatePresence mode="popLayout">
-        <motion.div
-          layout
-          key="header"
-          className={classes["header__container"]}
-        >
-          <h2 className={classes.title}>Cursos</h2>
+        <div layout key="header" className={classes["header__container"]}>
+          <h2 className={classes.title}>Alumnos</h2>
           <Link
             href={`/academia/iv-brigada-aerea/admin?vista=alumnos${
-              isCreateMode ? "" : "&crear=curso"
+              isCreateMode ? "" : "&crear=alumno"
             }`}
             scroll={false}
           >
@@ -35,9 +31,9 @@ const ClassroomEditor = (props) => {
               {isCreateMode ? <XCircleIcon /> : <PlusCircleIcon />}
             </motion.div>
           </Link>
-        </motion.div>
-        <h3 className={classes.subtitle}>IV Brigada Aérea</h3>
-        {isCreateMode && <AddClassroom />}
+        </div>
+        <h3 className={classes.subtitle}>3ro I</h3>
+        {isCreateMode && <AddStudent />}
         <motion.ul
           layout
           transition={{ duration: 0.5, type: "spring" }}
@@ -48,18 +44,12 @@ const ClassroomEditor = (props) => {
             whileHover={{ backgroundColor: "rgb(20, 128, 118)", color: "#fff" }}
             className={classes.item}
           >
-            3ro I
-          </motion.li>
-          <motion.li
-            whileHover={{ backgroundColor: "rgb(20, 128, 118)", color: "#fff" }}
-            className={classes.item}
-          >
-            3ro II
+            <p>Pepe Onguito</p>
           </motion.li>
         </motion.ul>
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };
 
-export default ClassroomEditor;
+export default StudentsEditor;

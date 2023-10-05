@@ -7,6 +7,7 @@ const Action = ({ title, icon, link, isActive }) => {
     <Link
       className={`${classes.container} ${isActive ? classes.active : ""}`}
       href={link}
+      scroll={false}
     >
       <div
         className={`${classes.icon} ${isActive ? classes.activeContent : ""}`}

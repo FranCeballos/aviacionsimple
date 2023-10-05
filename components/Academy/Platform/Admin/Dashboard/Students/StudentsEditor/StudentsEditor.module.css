@@ -1,6 +1,6 @@
 .container {
-  border-bottom: 2.5px solid var(--acad-main-dark);
-  padding-bottom: 30px;
+  border-top: 2.5px solid var(--acad-main-dark);
+  padding-top: 30px;
 }
 
 .header__container {
@@ -9,6 +9,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0px;
 }
 
 .button__add {
@@ -27,6 +28,7 @@
   font-size: 1.5rem;
   margin-bottom: 34px;
 }
+
 .list {
   list-style: none;
   height: 400px;
@@ -36,16 +38,19 @@
 .item {
   padding: 10px 20px;
   border-bottom: 2px solid var(--acad-main-dark);
+  border-left: none;
+  border-right: none;
   border-radius: 5px;
   font-size: 1.5rem;
   cursor: pointer;
+  margin-bottom: 15px;
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    padding-bottom: 0;
-    padding-right: 30px;
-    border-bottom: 0;
-    border-right: 2.5px solid var(--acad-main-dark);
+    padding-top: 0;
+    padding-left: 30px;
+    border-top: 0;
+    border-left: 2.5px solid var(--acad-main-dark);
   }
 }

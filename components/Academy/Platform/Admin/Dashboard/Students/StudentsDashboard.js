@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import classes from "./StudentsDashboard.module.css";
 import ClassroomEditor from "./ClassroomEditor/ClassroomEditor";
-import StudentsEditor from "./StudentsEditor";
+import StudentsEditor from "./StudentsEditor/StudentsEditor";
 
 const StudentsDashboard = ({ key }) => {
   return (
