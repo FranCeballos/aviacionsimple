@@ -14,8 +14,12 @@ import AddClassroom from "./AddClassroom";
 import TripleSpinner from "@/components/UI/AnimatedComponents/loaders/TripleSpinner";
 
 import classes from "./ClassroomEditor.module.css";
+import ClassroomItem from "./ClassroomItem";
 
 const ClassroomEditor = (props) => {
+  const {
+    query: { curso: classroom },
+  } = useRouter();
   const { data, isLoading } = useGetClassroomsQuery();
   const {
     query: { crear },
@@ -50,7 +54,7 @@ const ClassroomEditor = (props) => {
             <TripleSpinner />
           </div>
         )}
-        {data?.classrooms && (
+        {data?.classrooms && data?.classrooms.length > 0 && (
           <motion.ul
             layout
             initial={{ opacity: 0, y: "50px" }}
@@ -60,26 +64,19 @@ const ClassroomEditor = (props) => {
             className={classes.list}
           >
             {data.classrooms.map((item) => (
-              <motion.li
-                transition={{ duration: 0.5, type: "spring" }}
-                key={item._id}
-                whileHover={{
-                  backgroundColor: "rgb(20, 128, 118)",
-                  color: "#fff",
-                }}
-                className={classes.item}
-              >
-                <Link
-                  href={`/academia/iv-brigada-aerea/admin?vista=alumnos&curso=${item._id}`}
-                  scroll={false}
-                  className={classes.link}
-                >
-                  <p>{`${item.grade} ${item.division}`}</p>
-                  <p>{item.year}</p>
-                </Link>
-              </motion.li>
+              <ClassroomItem data={item} selectedClassroom={classroom} />
             ))}
           </motion.ul>
+        )}
+        {data?.classrooms.length === 0 && (
+          <motion.p
+            transition={{ duration: 0.5, type: "spring" }}
+            layout
+            className={classes["empty__text"]}
+            key="no"
+          >
+            Crea un curso para comenzar a trabajar
+          </motion.p>
         )}
       </AnimatePresence>
     </div>
