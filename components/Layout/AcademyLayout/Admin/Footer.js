@@ -10,10 +10,11 @@ const Footer = (props) => {
         <div className={classes["logo__container"]}>
           <Image
             className={classes.logo}
-            src="/assets/svg/logo.svg"
-            width={100}
-            height={100}
+            src="/assets/img/logos/logo.webp"
             alt="Logo image"
+            width={2149}
+            height={1648}
+            quality={10}
           />
         </div>
         <a

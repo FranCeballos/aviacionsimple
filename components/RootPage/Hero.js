@@ -36,8 +36,8 @@ const Hero = (props) => {
           />
         )}
       </motion.div>
-      <motion.div ref={containerRef} className={classes["text__container"]}>
-        <ParallaxOnScroll distance="30vh" ref={containerRef}>
+      <ParallaxOnScroll distance="30vh" ref={containerRef}>
+        <motion.div ref={containerRef} className={classes["text__container"]}>
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -46,8 +46,8 @@ const Hero = (props) => {
           >
             EXPERIMENTÁ EL MUNDO DE LA AVIACIÓN
           </motion.h1>
-        </ParallaxOnScroll>
-      </motion.div>
+        </motion.div>
+      </ParallaxOnScroll>
     </motion.section>
   );
 };
