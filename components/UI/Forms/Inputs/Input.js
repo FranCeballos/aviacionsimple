@@ -4,18 +4,22 @@ import classes from "./Input.module.css";
 const Input = ({
   placeholder = "",
   error = " ",
+  containerStyle = {},
+  errorStyle = {},
   style = {},
   type = "text",
 }) => {
   return (
-    <div className={classes.container}>
+    <div style={containerStyle} className={classes.container}>
       <input
         type={type}
         style={style}
         className={classes.input}
         placeholder={placeholder}
       />
-      <p className={classes.error}>{error}</p>
+      <p style={errorStyle} className={classes.error}>
+        {error}
+      </p>
     </div>
   );
 };

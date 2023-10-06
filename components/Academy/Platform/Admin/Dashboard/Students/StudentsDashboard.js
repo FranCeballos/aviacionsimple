@@ -4,10 +4,10 @@ import classes from "./StudentsDashboard.module.css";
 import ClassroomEditor from "./ClassroomEditor/ClassroomEditor";
 import StudentsEditor from "./StudentsEditor/StudentsEditor";
 
-const StudentsDashboard = ({ key }) => {
+const StudentsDashboard = ({ keyName }) => {
   return (
     <motion.div
-      key={key}
+      key={keyName}
       initial={{ x: "-50vw", opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.75, type: "spring" }}

@@ -15,7 +15,8 @@ const AddStudent = (props) => {
       transition={{ duration: 0.5, type: "spring" }}
       className={classes.container}
     >
-      <Input type="text" placeholder="Nombre completo" />
+      <Input containerStyle={{}} type="text" placeholder="Nombre" />
+      <Input type="text" placeholder="Apellido" />
       <Input type="email" placeholder="Email" />
       <motion.button
         whileHover={{ scale: 1.03 }}

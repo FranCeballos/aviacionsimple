@@ -15,7 +15,7 @@ const StudentsEditor = (props) => {
   return (
     <motion.div className={classes.container}>
       <AnimatePresence mode="popLayout">
-        <div layout key="header" className={classes["header__container"]}>
+        <div key="header" className={classes["header__container"]}>
           <h2 className={classes.title}>Alumnos</h2>
           <Link
             href={`/academia/iv-brigada-aerea/admin?vista=alumnos${

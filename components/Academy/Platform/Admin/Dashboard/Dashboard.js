@@ -10,8 +10,8 @@ const Dashboard = (props) => {
     query: { vista },
   } = useRouter();
   const dashboardContent = {
-    alumnos: <StudentsDashboard key="students" />,
-    materias: <SubjectsDashboard key="subjects" />,
+    alumnos: <StudentsDashboard keyName="students" />,
+    materias: <SubjectsDashboard keyName="subjects" />,
   };
   return (
     <div className={classes.container}>
