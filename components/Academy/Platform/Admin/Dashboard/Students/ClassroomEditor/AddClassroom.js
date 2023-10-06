@@ -33,7 +33,6 @@ const AddClassroom = ({ keyName }) => {
     });
     refetch();
   }
-  console.log(result);
 
   return (
     <motion.div

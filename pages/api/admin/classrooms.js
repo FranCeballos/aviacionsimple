@@ -54,13 +54,12 @@ const handler = async (req, res) => {
         .find({ customId })
         .project({ _id: 1 })
         .toArray();
-      console.log(customId);
-      console.log(existingClassroom[0]);
 
       if (existingClassroom[0]) {
         throw new Error("El curso ya está creado.");
       }
     } catch (error) {
+      client.close();
       return res.status(422).json({ error: error.message });
     }
 
@@ -75,11 +74,13 @@ const handler = async (req, res) => {
         subjects: [],
       };
       await db.collection("classrooms").insertOne(newClassroom);
+
+      client.close();
       return res
         .status(200)
         .json({ message: "Curso creado", classroom: newClassroom });
     } catch (error) {
-      console.log(error);
+      client.close();
       return res.status(error.status).json({ error: error.message });
     }
   }
