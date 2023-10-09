@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
 // API
-import { useGetClassroomsQuery } from "@/store/services/classroomsApi";
+import { useGetAllClassroomsQuery } from "@/store/services/classroomsApi";
 
 // Components
 import PlusCircleIcon from "@/components/UI/Icons/PlusCircleIcon";
@@ -20,7 +20,7 @@ const ClassroomEditor = (props) => {
   const {
     query: { curso: classroom },
   } = useRouter();
-  const { data, isLoading } = useGetClassroomsQuery();
+  const { data, isLoading } = useGetAllClassroomsQuery();
   const {
     query: { crear },
   } = useRouter();
@@ -64,7 +64,11 @@ const ClassroomEditor = (props) => {
             className={classes.list}
           >
             {data.classrooms.map((item) => (
-              <ClassroomItem data={item} selectedClassroom={classroom} />
+              <ClassroomItem
+                key={item.customId}
+                data={item}
+                selectedClassroom={classroom}
+              />
             ))}
           </motion.ul>
         )}
@@ -75,7 +79,7 @@ const ClassroomEditor = (props) => {
             className={classes["empty__text"]}
             key="no"
           >
-            Crea un curso para comenzar a trabajar
+            Creá un curso para comenzar a trabajar
           </motion.p>
         )}
       </AnimatePresence>

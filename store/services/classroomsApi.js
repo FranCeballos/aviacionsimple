@@ -8,8 +8,11 @@ export const classroomsApi = createApi({
   refetchOnFocus: true,
   refetchOnReconnect: true,
   endpoints: (build) => ({
-    getClassrooms: build.query({
+    getAllClassrooms: build.query({
       query: () => ({ url: "" }),
+    }),
+    getClassroom: build.query({
+      query: ({ customId }) => ({ url: `/${customId}` }),
     }),
     postClassroom: build.mutation({
       query: ({ ...body }) => ({
@@ -21,5 +24,8 @@ export const classroomsApi = createApi({
   }),
 });
 
-export const { useGetClassroomsQuery, usePostClassroomMutation } =
-  classroomsApi;
+export const {
+  useGetAllClassroomsQuery,
+  useLazyGetClassroomQuery,
+  usePostClassroomMutation,
+} = classroomsApi;
