@@ -17,14 +17,14 @@ const StudentsEditor = (props) => {
   const isCreateMode = crear === "alumno";
   const [getClassroom, result] = useLazyGetClassroomQuery();
 
-  const { isLoading, data } = result;
-  console.log(result);
+  const { isLoading, isFetching, data } = result;
 
   useEffect(() => {
     if (curso) {
       getClassroom({ customId: curso });
     }
   }, [curso]);
+
   return (
     <motion.div className={classes.container}>
       <AnimatePresence mode="popLayout">
@@ -45,12 +45,13 @@ const StudentsEditor = (props) => {
             </motion.div>
           </Link>
         </div>
-        {isLoading && (
-          <div key="loader" className={classes.loader}>
-            <TripleSpinner />
-          </div>
-        )}
-        {result.isSuccess && (
+        {isLoading ||
+          (isFetching && (
+            <div key="loader" className={classes.loader}>
+              <TripleSpinner />
+            </div>
+          ))}
+        {result.isSuccess && !isFetching && (
           <>
             <motion.h3 className={classes.subtitle}>
               {data.classroom.grade} {data.classroom.division}{" "}

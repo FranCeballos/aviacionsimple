@@ -1,10 +1,48 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import CheckCircleIcon from "@/components/UI/Icons/CheckCircleIcon";
 import classes from "./AddStudent.module.css";
 import Input from "@/components/UI/Forms/Inputs/Input";
+import { usePostStudentMutation } from "@/store/services/studentsApi";
+import { useRouter } from "next/router";
+import CreateDotsLoader from "@/components/UI/AnimatedComponents/loaders/CreateDotsLoader";
+import { useLazyGetClassroomQuery } from "@/store/services/classroomsApi";
 
 const AddStudent = (props) => {
+  const firstNameRef = useRef(null);
+  const lastNameRef = useRef(null);
+  const emailRef = useRef(null);
+  const [postStudent, result] = usePostStudentMutation();
+  const [getClassroom] = useLazyGetClassroomQuery();
+  const {
+    query: { curso: classroomId },
+    push,
+  } = useRouter();
+
+  const submitHandler = async () => {
+    const firstName = firstNameRef.current.value;
+    const lastName = lastNameRef.current.value;
+    const email = emailRef.current.value;
+
+    if (firstName && lastName && email) {
+      const { data } = await postStudent({
+        firstName,
+        lastName,
+        email,
+        classroomId,
+      });
+
+      if (data?.isSuccess) {
+        push(
+          `/academia/iv-brigada-aerea/admin?vista=alumnos&curso=${classroomId}`,
+          "",
+          { scroll: false }
+        );
+        getClassroom({ customId: classroomId });
+      }
+    }
+  };
+
   return (
     <motion.div
       layout
@@ -15,16 +53,28 @@ const AddStudent = (props) => {
       transition={{ duration: 0.5, type: "spring" }}
       className={classes.container}
     >
-      <Input containerStyle={{}} type="text" placeholder="Nombre" />
-      <Input type="text" placeholder="Apellido" />
-      <Input type="email" placeholder="Email" />
-      <motion.button
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.98 }}
-        className={classes.button}
-      >
-        <CheckCircleIcon />
-      </motion.button>
+      {result.isLoading ? (
+        <CreateDotsLoader />
+      ) : (
+        <>
+          <Input
+            ref={firstNameRef}
+            containerStyle={{}}
+            type="text"
+            placeholder="Nombre"
+          />
+          <Input ref={lastNameRef} type="text" placeholder="Apellido" />
+          <Input ref={emailRef} type="email" placeholder="Email" />
+          <motion.button
+            onClick={submitHandler}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className={classes.button}
+          >
+            <CheckCircleIcon />
+          </motion.button>
+        </>
+      )}
     </motion.div>
   );
 };

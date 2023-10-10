@@ -18,6 +18,7 @@ const handler = async (req, res) => {
       const classroom = await db
         .collection("classrooms")
         .aggregate([
+          { $match: { customId } },
           {
             $lookup: {
               from: "users",
@@ -27,7 +28,6 @@ const handler = async (req, res) => {
             },
           },
         ])
-        .sort({ customId: 1 })
         .toArray();
 
       if (!classroom) {
@@ -41,7 +41,7 @@ const handler = async (req, res) => {
       });
     } catch (error) {
       client?.close();
-      res.status(error.status).json({ error: error.message });
+      res.status(500).json({ error: error.message });
     }
   }
 };

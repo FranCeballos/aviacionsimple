@@ -5,14 +5,16 @@ import CheckCircleIcon from "@/components/UI/Icons/CheckCircleIcon";
 
 import classes from "./AddClassroom.module.css";
 import {
-  useGetClassroomsQuery,
+  useGetAllClassroomsQuery,
   usePostClassroomMutation,
 } from "@/store/services/classroomsApi";
 import { useRouter } from "next/router";
+import CreateDots from "@/components/UI/AnimatedComponents/loaders/CreateDotsLoader";
+import CreateDotsLoader from "@/components/UI/AnimatedComponents/loaders/CreateDotsLoader";
 
 const AddClassroom = ({ keyName }) => {
   const router = useRouter();
-  const { data, refetch } = useGetClassroomsQuery();
+  const { data, refetch } = useGetAllClassroomsQuery();
   const [postClassroom, result] = usePostClassroomMutation();
   const gradeRef = useRef();
   const divisionRef = useRef();
@@ -45,7 +47,7 @@ const AddClassroom = ({ keyName }) => {
       className={classes.container}
     >
       {result.isLoading ? (
-        <div className={classes.loader}></div>
+        <CreateDotsLoader />
       ) : (
         <>
           <select
