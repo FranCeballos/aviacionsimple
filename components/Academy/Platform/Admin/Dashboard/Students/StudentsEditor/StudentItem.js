@@ -3,13 +3,15 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import classes from "./StudentItem.module.css";
 import useDimension from "@/hooks/use-dimension";
+import StudentUpdater from "./StudentUpdater";
 
 const StudentItem = ({ data, selectedStudent, classroomCustomId }) => {
+  const isSelected = selectedStudent === data.customId;
   const { width } = useDimension();
   return (
     <motion.li
       animate={
-        selectedStudent === data.customId
+        isSelected
           ? {
               backgroundColor: "rgb(20, 128, 118)",
               color: "#fff",
@@ -33,12 +35,17 @@ const StudentItem = ({ data, selectedStudent, classroomCustomId }) => {
       className={classes.item}
     >
       <Link
-        href={`/academia/iv-brigada-aerea/admin?vista=alumnos&curso=${classroomCustomId}&alumno=${data.customId}`}
+        href={
+          isSelected
+            ? `/academia/iv-brigada-aerea/admin?vista=alumnos&curso=${classroomCustomId}`
+            : `/academia/iv-brigada-aerea/admin?vista=alumnos&curso=${classroomCustomId}&alumno=${data.customId}`
+        }
         scroll={false}
         className={classes.link}
       >
         <p>{`${data.lastName} ${data.firstName}`}</p>
       </Link>
+      {isSelected && <StudentUpdater data={data} />}
     </motion.li>
   );
 };

@@ -73,6 +73,42 @@ const handle = async (req, res) => {
       return res.status(500).json({ error: error.message });
     }
   }
+
+  if (req.method === "PATCH") {
+    const { firstName, lastName, email, studentId } = req.body;
+
+    if (!firstName || !lastName || !email || !studentId) {
+      return res.status(422).json({ error: "Some required field is missing." });
+    }
+
+    // Connect to db
+    let client;
+    try {
+      client = await connectToDatabase();
+    } catch (error) {
+      return res.status(500).json({
+        error: "Fallo al conectar con la base de datos! Pruebe en un minuto",
+      });
+    }
+    const db = client.db();
+
+    // Update student
+    try {
+      await db
+        .collection("users")
+        .updateOne(
+          { customId: studentId },
+          { $set: { firstName, lastName, email } }
+        );
+      return res.status(200).json({
+        message: "Student updated",
+        updatedData: { firstName, lastName, email },
+        isSuccess: true,
+      });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  }
 };
 
 export default handle;

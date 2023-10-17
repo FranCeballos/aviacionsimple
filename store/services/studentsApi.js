@@ -14,7 +14,14 @@ export const studentsApi = createApi({
         body,
       }),
     }),
+    patchStudent: build.mutation({
+      query: ({ ...body }) => ({
+        url: "",
+        method: "PATCH",
+        body,
+      }),
+    }),
   }),
 });
 
-export const { usePostStudentMutation } = studentsApi;
+export const { usePostStudentMutation, usePatchStudentMutation } = studentsApi;

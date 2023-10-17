@@ -30,27 +30,33 @@ const StudentsEditor = (props) => {
       <AnimatePresence mode="popLayout">
         <div key="header" className={classes["header__container"]}>
           <h2 className={classes.title}>Alumnos</h2>
-          <Link
-            href={`/academia/iv-brigada-aerea/admin?vista=alumnos${
-              isCreateMode ? `&curso=${curso}` : `&curso=${curso}&crear=alumno`
-            }`}
-            scroll={false}
-          >
-            <motion.div
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              className={classes["button__add"]}
+          {curso && (
+            <Link
+              href={`/academia/iv-brigada-aerea/admin?vista=alumnos${
+                isCreateMode
+                  ? `&curso=${curso}`
+                  : `&curso=${curso}&crear=alumno`
+              }`}
+              scroll={false}
             >
-              {isCreateMode ? <XCircleIcon /> : <PlusCircleIcon />}
-            </motion.div>
-          </Link>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, type: "spring" }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                className={classes["button__add"]}
+              >
+                {isCreateMode ? <XCircleIcon /> : <PlusCircleIcon />}
+              </motion.div>
+            </Link>
+          )}
         </div>
-        {isLoading ||
-          (isFetching && (
-            <div key="loader" className={classes.loader}>
-              <TripleSpinner />
-            </div>
-          ))}
+        {(isLoading || isFetching) && (
+          <div key="loader" className={classes.loader}>
+            <TripleSpinner />
+          </div>
+        )}
         {result.isSuccess && !isFetching && (
           <>
             <motion.h3 className={classes.subtitle}>
