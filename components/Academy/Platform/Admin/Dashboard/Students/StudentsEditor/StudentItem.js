@@ -3,7 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import classes from "./StudentItem.module.css";
 import useDimension from "@/hooks/use-dimension";
-import StudentUpdater from "./StudentUpdater";
+import StudentUpdater from "./StudentUpdater/StudentUpdater";
 
 const StudentItem = ({ data, selectedStudent, classroomCustomId }) => {
   const isSelected = selectedStudent === data.customId;

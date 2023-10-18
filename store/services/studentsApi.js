@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const studentsApi = createApi({
   reducerPath: "studentsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "/api/admin/students",
+    baseUrl: "/api/admin/students/",
   }),
   refetchOnReconnect: true,
   endpoints: (build) => ({
@@ -21,7 +21,14 @@ export const studentsApi = createApi({
         body,
       }),
     }),
+    transferStudent: build.mutation({
+      query: ({ ...body }) => ({
+        url: "transfer",
+        method: "PATCH",
+        body,
+      }),
+    }),
   }),
 });
 
-export const { usePostStudentMutation, usePatchStudentMutation } = studentsApi;
+export const { usePostStudentMutation, usePatchStudentMutation, useTransferStudentMutation } = studentsApi;

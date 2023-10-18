@@ -1,24 +1,21 @@
-import React, { useEffect, useRef } from "react";
-import classes from "./StudentUpdater.module.css";
-import Input from "@/components/UI/Forms/Inputs/Input";
-import ConfirmButton from "@/components/UI/Buttons/ConfirmButton";
-import { usePatchStudentMutation } from "@/store/services/studentsApi";
+import React, { useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useLazyGetClassroomQuery } from "@/store/services/classroomsApi";
+import { usePatchStudentMutation } from "@/store/services/studentsApi";
+import Input from "@/components/UI/Forms/Inputs/Input";
+import ConfirmButton from "@/components/UI/Buttons/ConfirmButton";
 import CreateDotsLoader from "@/components/UI/AnimatedComponents/loaders/CreateDotsLoader";
 
-const StudentUpdater = ({ data }) => {
+const StudentEditForm = ({ data }) => {
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
   const emailRef = useRef(null);
   const {
-    query: { alumno: studentId, curso: classroomId },
+    query: { alumno: studentId, curso: classroomId, modo: mode },
     push,
   } = useRouter();
   const [trigger] = useLazyGetClassroomQuery();
   const [patchStudent, { isLoading }] = usePatchStudentMutation();
-
-  console.log(isLoading);
 
   const setInitialValues = () => {
     firstNameRef.current.value = data.firstName;
@@ -53,34 +50,28 @@ const StudentUpdater = ({ data }) => {
       }
     }
   };
-
-  return (
-    <div className={classes.container}>
-      {isLoading ? (
-        <CreateDotsLoader />
-      ) : (
-        <>
-          <p className={classes.title}>Editar</p>
-          <Input
-            ref={firstNameRef}
-            placeholder="Nombre"
-            initialValue={data.firstName}
-          />
-          <Input
-            ref={lastNameRef}
-            placeholder="Apellido"
-            initialValue={data.lastName}
-          />
-          <Input ref={emailRef} placeholder="Email" initialValue={data.email} />
-          <ConfirmButton
-            onClick={submitHandler}
-            style={{ backgroundColor: "rgb(20, 128, 118)", marginTop: "10px" }}
-            title="Actualizar"
-          />
-        </>
-      )}
-    </div>
+  return isLoading ? (
+    <CreateDotsLoader />
+  ) : (
+    <>
+      <Input
+        ref={firstNameRef}
+        placeholder="Nombre"
+        initialValue={data.firstName}
+      />
+      <Input
+        ref={lastNameRef}
+        placeholder="Apellido"
+        initialValue={data.lastName}
+      />
+      <Input ref={emailRef} placeholder="Email" initialValue={data.email} />
+      <ConfirmButton
+        onClick={submitHandler}
+        style={{ backgroundColor: "rgb(20, 128, 118)", marginTop: "10px" }}
+        title="Actualizar"
+      />
+    </>
   );
 };
 
-export default StudentUpdater;
+export default StudentEditForm;

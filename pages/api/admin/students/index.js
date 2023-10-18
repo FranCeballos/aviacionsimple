@@ -100,12 +100,15 @@ const handle = async (req, res) => {
           { customId: studentId },
           { $set: { firstName, lastName, email } }
         );
+
+      client.close();
       return res.status(200).json({
         message: "Student updated",
         updatedData: { firstName, lastName, email },
         isSuccess: true,
       });
     } catch (error) {
+      client?.close();
       return res.status(500).json({ error: error.message });
     }
   }
