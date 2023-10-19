@@ -5,8 +5,11 @@ const ScaleOnHover = ({ children, className = "", backgroundColor = "" }) => {
   return (
     <motion.div
       className={className}
-      initial={{ borderRadius: "10px" }}
-      whileHover={{ scale: 1.01, backgroundColor, borderRadius: "10px" }}
+      initial={{ borderRadius: "10px", opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      whileHover={{ scale: 1.03, backgroundColor, borderRadius: "10px" }}
+      whileTap={{ scale: 0.98 }}
       transition={{ duration: 1, type: "spring" }}
     >
       {children}

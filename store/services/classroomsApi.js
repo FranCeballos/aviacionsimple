@@ -21,6 +21,13 @@ export const classroomsApi = createApi({
         body,
       }),
     }),
+    transferClassroom: build.mutation({
+      query: ({ ...body }) => ({
+        url: "/transfer",
+        method: "PATCH",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -28,4 +35,5 @@ export const {
   useGetAllClassroomsQuery,
   useLazyGetClassroomQuery,
   usePostClassroomMutation,
+  useTransferClassroomMutation,
 } = classroomsApi;

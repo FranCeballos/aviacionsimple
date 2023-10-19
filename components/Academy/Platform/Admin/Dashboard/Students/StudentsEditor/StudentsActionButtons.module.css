@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+.button__transfer {
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  border: none;
+  color: var(--main-dark-color);
+  cursor: pointer;
+}
+.button__add {
+  height: 40px;
+  width: 40px;
+  background-color: transparent;
+  border: none;
+  color: var(--main-dark-color);
+  cursor: pointer;
+}

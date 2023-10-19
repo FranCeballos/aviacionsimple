@@ -1,0 +1,10 @@
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 34px;
+}
+
+.list {
+  list-style: none;
+  height: 400px;
+  overflow: scroll;
+}

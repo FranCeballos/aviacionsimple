@@ -12,38 +12,8 @@
   margin-bottom: 0px;
 }
 
-.button__add {
-  height: 40px;
-  width: 40px;
-  background-color: transparent;
-  border: none;
-  color: var(--main-dark-color);
-  cursor: pointer;
-}
-
 .title {
   color: var(--main-dark-color);
-}
-.subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 34px;
-}
-
-.list {
-  list-style: none;
-  height: 400px;
-  overflow: scroll;
-}
-
-.item {
-  padding: 10px 20px;
-  border-bottom: 2px solid var(--acad-main-dark);
-  border-left: none;
-  border-right: none;
-  border-radius: 5px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin-bottom: 15px;
 }
 
 .loader {

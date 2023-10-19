@@ -12,7 +12,6 @@
   border: 5px solid var(--third-dark-color);
   padding: 20px;
 }
-
 .button {
   flex: 0 0 40px;
   height: 40px;
@@ -20,6 +19,18 @@
   color: var(--main-dark-color);
   background-color: transparent;
   border: none;
+  cursor: pointer;
+}
+
+.select {
+  flex: 1;
+  height: 48px;
+  background-color: var(--third-dark-color);
+  border: 2px solid var(--acad-main-dark);
+  border-radius: 10px;
+  padding: 0 10px;
+  color: #fff;
+  font-size: 1.3rem;
   cursor: pointer;
 }
 

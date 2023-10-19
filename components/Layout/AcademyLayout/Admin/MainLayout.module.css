@@ -1,6 +1,6 @@
 .main {
   margin-top: var(--header-height);
-  padding: 25px 8vw;
+  padding: 25px 4vw;
   width: 100%;
   min-height: 100vh;
   display: flex;

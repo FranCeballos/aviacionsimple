@@ -7,6 +7,7 @@ import { usePostStudentMutation } from "@/store/services/studentsApi";
 import { useRouter } from "next/router";
 import CreateDotsLoader from "@/components/UI/AnimatedComponents/loaders/CreateDotsLoader";
 import { useLazyGetClassroomQuery } from "@/store/services/classroomsApi";
+import ScaleOnHover from "@/components/UI/AnimatedComponents/ScaleOnHover";
 
 const AddStudent = (props) => {
   const firstNameRef = useRef(null);
@@ -57,6 +58,7 @@ const AddStudent = (props) => {
         <CreateDotsLoader />
       ) : (
         <>
+          <p className={classes.title}>Añadir alumno</p>
           <Input
             ref={firstNameRef}
             containerStyle={{}}
@@ -65,14 +67,9 @@ const AddStudent = (props) => {
           />
           <Input ref={lastNameRef} type="text" placeholder="Apellido" />
           <Input ref={emailRef} type="email" placeholder="Email" />
-          <motion.button
-            onClick={submitHandler}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-            className={classes.button}
-          >
+          <ScaleOnHover className={classes.button}>
             <CheckCircleIcon />
-          </motion.button>
+          </ScaleOnHover>
         </>
       )}
     </motion.div>
