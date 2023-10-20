@@ -37,7 +37,7 @@ const handler = async (req, res) => {
       client.close();
       return res.status(200).json({
         classroom: classroom[0],
-        message: `Classroom with custom ID "${customId}" found.`,
+        /* message: `Classroom with custom ID "${customId}" found.`, */
       });
     } catch (error) {
       client?.close();

@@ -35,6 +35,13 @@ export const studentsApi = createApi({
         body,
       }),
     }),
+    postDeleteStudent: build.mutation({
+      query: ({ ...body }) => ({
+        url: "delete",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -43,4 +50,5 @@ export const {
   usePatchStudentMutation,
   useTransferStudentMutation,
   usePostResetPasswordMutation,
+  usePostDeleteStudentMutation,
 } = studentsApi;

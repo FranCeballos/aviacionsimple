@@ -67,8 +67,10 @@ const AddStudent = (props) => {
           />
           <Input ref={lastNameRef} type="text" placeholder="Apellido" />
           <Input ref={emailRef} type="email" placeholder="Email" />
-          <ScaleOnHover className={classes.button}>
-            <CheckCircleIcon />
+          <ScaleOnHover>
+            <button onClick={submitHandler} className={classes.button}>
+              <CheckCircleIcon />
+            </button>
           </ScaleOnHover>
         </>
       )}

@@ -5,7 +5,10 @@ import {
 } from "@/store/services/classroomsApi";
 import ConfirmButton from "@/components/UI/Buttons/ConfirmButton";
 import classes from "./StudentTransferForm.module.css";
-import { useTransferStudentMutation } from "@/store/services/studentsApi";
+import {
+  usePostDeleteStudentMutation,
+  useTransferStudentMutation,
+} from "@/store/services/studentsApi";
 import { useRouter } from "next/router";
 import TransferDotsLoader from "@/components/UI/AnimatedComponents/loaders/TransferDotsLoader";
 
@@ -13,16 +16,25 @@ const StudentTransferForm = (props) => {
   const selectRef = useRef(null);
   const { data } = useGetAllClassroomsQuery();
   const [getClassroom] = useLazyGetClassroomQuery();
-  const [transferStudent, transferResult] = useTransferStudentMutation();
+  const [transferStudent, { isLoading: transferIsLoading }] =
+    useTransferStudentMutation();
+  const [deleteStudent, { isLoading: deletionIsLoading }] =
+    usePostDeleteStudentMutation();
   const {
-    query: { curso: prevClassroomId, alumno: studentId },
+    query: {
+      curso: prevClassroomId,
+      alumno: studentId,
+      confirmar: confirmAction,
+    },
     push,
   } = useRouter();
-  const filteredData = data.classrooms?.filter(
+  const isConfirmDeleteAction = confirmAction === "borrarAlumno";
+
+  const filteredData = data?.classrooms?.filter(
     (i) => i.customId !== prevClassroomId
   );
 
-  const submitHandler = async () => {
+  const submitTransferHandler = async () => {
     const nextClassroomId = selectRef.current.value;
     if (nextClassroomId) {
       const { data: responseData } = await transferStudent({
@@ -41,9 +53,25 @@ const StudentTransferForm = (props) => {
     }
   };
 
+  const submitDeleteHandler = async () => {
+    const { data: deleteResult } = await deleteStudent({
+      studentId,
+      classroomId: prevClassroomId,
+    });
+
+    if (deleteResult.isSuccess) {
+      push(
+        `/academia/iv-brigada-aerea/admin?vista=alumnos&curso=${prevClassroomId}`,
+        "",
+        { scroll: false }
+      );
+      getClassroom({ customId: prevClassroomId });
+    }
+  };
+
   return (
     <>
-      {transferResult.isLoading ? (
+      {transferIsLoading || deletionIsLoading ? (
         <TransferDotsLoader />
       ) : (
         <div className={classes.container}>
@@ -55,8 +83,33 @@ const StudentTransferForm = (props) => {
               </option>
             ))}
           </select>
+          {isConfirmDeleteAction ? (
+            <ConfirmButton
+              onClick={submitDeleteHandler}
+              style={{
+                backgroundColor: "rgb(134, 1, 1)",
+                marginTop: "10px",
+              }}
+              title="Confirmar Borrar"
+            />
+          ) : (
+            <ConfirmButton
+              onClick={() =>
+                push(
+                  `/academia/iv-brigada-aerea/admin?vista=alumnos&curso=${prevClassroomId}&alumno=${studentId}&modo=transferir&confirmar=borrarAlumno`,
+                  "",
+                  { scroll: false }
+                )
+              }
+              style={{
+                backgroundColor: "rgb(134, 1, 1)",
+                marginTop: "10px",
+              }}
+              title="Borrar alumno"
+            />
+          )}
           <ConfirmButton
-            onClick={submitHandler}
+            onClick={submitTransferHandler}
             style={{ backgroundColor: "rgb(20, 128, 118)", marginTop: "10px" }}
             title="Transferir"
           />
