@@ -1,7 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useLazyGetClassroomQuery } from "@/store/services/classroomsApi";
-import { usePatchStudentMutation } from "@/store/services/studentsApi";
+import {
+  usePatchStudentMutation,
+  usePostResetPasswordMutation,
+} from "@/store/services/studentsApi";
+
 import Input from "@/components/UI/Forms/Inputs/Input";
 import ConfirmButton from "@/components/UI/Buttons/ConfirmButton";
 import CreateDotsLoader from "@/components/UI/AnimatedComponents/loaders/CreateDotsLoader";
@@ -11,11 +15,15 @@ const StudentEditForm = ({ data }) => {
   const lastNameRef = useRef(null);
   const emailRef = useRef(null);
   const {
-    query: { alumno: studentId, curso: classroomId, modo: mode },
+    query: { alumno: studentId, curso: classroomId, confirmar: confirmAction },
     push,
   } = useRouter();
+  const isConfirmAction = confirmAction === "reiniciarContraseña";
   const [trigger] = useLazyGetClassroomQuery();
-  const [patchStudent, { isLoading }] = usePatchStudentMutation();
+  const [patchStudent, { isLoading: updateIsLoading }] =
+    usePatchStudentMutation();
+  const [resetPassword, { isLoading: resetPasswordIsLoading }] =
+    usePostResetPasswordMutation();
 
   const setInitialValues = () => {
     firstNameRef.current.value = data.firstName;
@@ -27,7 +35,7 @@ const StudentEditForm = ({ data }) => {
     setInitialValues();
   }, []);
 
-  const submitHandler = async () => {
+  const submitUpdateHandler = async () => {
     const firstName = firstNameRef.current.value;
     const lastName = lastNameRef.current.value;
     const email = emailRef.current.value;
@@ -40,7 +48,7 @@ const StudentEditForm = ({ data }) => {
         studentId,
       });
 
-      if (data.isSuccess) {
+      if (data?.isSuccess) {
         push(
           `/academia/iv-brigada-aerea/admin?vista=alumnos&curso=${classroomId}`,
           "",
@@ -50,7 +58,21 @@ const StudentEditForm = ({ data }) => {
       }
     }
   };
-  return isLoading ? (
+
+  const submitResetPassword = async () => {
+    const { data } = await resetPassword({ studentId });
+
+    if (data?.isSuccess) {
+      push(
+        `/academia/iv-brigada-aerea/admin?vista=alumnos&curso=${classroomId}`,
+        "",
+        { scroll: false }
+      );
+      trigger({ customId: classroomId });
+    }
+  };
+
+  return updateIsLoading || resetPasswordIsLoading ? (
     <CreateDotsLoader />
   ) : (
     <>
@@ -65,8 +87,27 @@ const StudentEditForm = ({ data }) => {
         initialValue={data.lastName}
       />
       <Input ref={emailRef} placeholder="Email" initialValue={data.email} />
+      {isConfirmAction ? (
+        <ConfirmButton
+          title="Confirmar reinicio"
+          onClick={submitResetPassword}
+          style={{ backgroundColor: "rgb(134, 1, 1)", marginTop: "10px" }}
+        />
+      ) : (
+        <ConfirmButton
+          title="Reiniciar contraseña"
+          onClick={() =>
+            push(
+              `/academia/iv-brigada-aerea/admin?vista=alumnos&curso=${classroomId}&alumno=${studentId}&modo=editar&confirmar=reiniciarContraseña`,
+              "",
+              { scroll: false }
+            )
+          }
+          style={{ backgroundColor: "#113946", marginTop: "10px" }}
+        />
+      )}
       <ConfirmButton
-        onClick={submitHandler}
+        onClick={submitUpdateHandler}
         style={{ backgroundColor: "rgb(20, 128, 118)", marginTop: "10px" }}
         title="Actualizar"
       />

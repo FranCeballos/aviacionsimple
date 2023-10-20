@@ -28,7 +28,19 @@ export const studentsApi = createApi({
         body,
       }),
     }),
+    postResetPassword: build.mutation({
+      query: ({ ...body }) => ({
+        url: "reset-password",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
-export const { usePostStudentMutation, usePatchStudentMutation, useTransferStudentMutation } = studentsApi;
+export const {
+  usePostStudentMutation,
+  usePatchStudentMutation,
+  useTransferStudentMutation,
+  usePostResetPasswordMutation,
+} = studentsApi;
