@@ -6,6 +6,7 @@ import {
 import ConfirmButton from "@/components/UI/Buttons/ConfirmButton";
 import classes from "./StudentTransferForm.module.css";
 import {
+  useCopyStudentToClassroomMutation,
   usePostDeleteStudentMutation,
   useTransferStudentMutation,
 } from "@/store/services/studentsApi";
@@ -20,6 +21,8 @@ const StudentTransferForm = (props) => {
     useTransferStudentMutation();
   const [deleteStudent, { isLoading: deletionIsLoading }] =
     usePostDeleteStudentMutation();
+  const [copyStudent, { isLoading: copyIsLoading }] =
+    useCopyStudentToClassroomMutation();
   const {
     query: {
       curso: prevClassroomId,
@@ -42,7 +45,7 @@ const StudentTransferForm = (props) => {
         studentId,
         nextClassroomId,
       });
-      if (responseData.isSuccess) {
+      if (responseData?.isSuccess) {
         push(
           `/academia/iv-brigada-aerea/admin?vista=alumnos&curso=${prevClassroomId}`,
           "",
@@ -59,7 +62,7 @@ const StudentTransferForm = (props) => {
       classroomId: prevClassroomId,
     });
 
-    if (deleteResult.isSuccess) {
+    if (deleteResult?.isSuccess) {
       push(
         `/academia/iv-brigada-aerea/admin?vista=alumnos&curso=${prevClassroomId}`,
         "",
@@ -69,9 +72,29 @@ const StudentTransferForm = (props) => {
     }
   };
 
+  const submitCopyHandler = async () => {
+    const nextClassroomId = selectRef.current.value;
+    if (nextClassroomId) {
+      const { data: copyResult } = await copyStudent({
+        studentCustomId: studentId,
+        prevClassroomId,
+        nextClassroomId,
+      });
+
+      if (copyResult?.isSuccess) {
+        push(
+          `/academia/iv-brigada-aerea/admin?vista=alumnos&curso=${prevClassroomId}`,
+          "",
+          { scroll: false }
+        );
+        getClassroom({ customId: prevClassroomId });
+      }
+    }
+  };
+
   return (
     <>
-      {transferIsLoading || deletionIsLoading ? (
+      {transferIsLoading || deletionIsLoading || copyIsLoading ? (
         <TransferDotsLoader />
       ) : (
         <div className={classes.container}>
@@ -108,6 +131,11 @@ const StudentTransferForm = (props) => {
               title="Borrar alumno"
             />
           )}
+          <ConfirmButton
+            onClick={submitCopyHandler}
+            style={{ backgroundColor: "#113946", marginTop: "10px" }}
+            title="Añadir a curso"
+          />
           <ConfirmButton
             onClick={submitTransferHandler}
             style={{ backgroundColor: "rgb(20, 128, 118)", marginTop: "10px" }}

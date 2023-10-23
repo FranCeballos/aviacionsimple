@@ -43,7 +43,7 @@ const handle = async (req, res) => {
         lastName,
         email,
         customId,
-        classroom: classroomId,
+        classrooms: [classroomId],
         isAdmin: false,
         hashedPassword:
           "$2a$12$8nXCebHKKScG9/rCxv6L5.iNMRxl4hBufQJA//p0XLAO/vCn2Dy.a",

@@ -29,9 +29,10 @@ const handler = async (req, res) => {
       const user = await db
         .collection("users")
         .find({ customId: studentId })
-        .project({ _id: 1 })
+        .project({ _id: 1, classrooms: 1 })
         .toArray();
       const userId = String(user[0]._id);
+      const userClassrooms = user[0].classrooms;
 
       const filteredStudents = classroom.students.filter(
         (user) => user.toString() !== userId
@@ -44,8 +45,21 @@ const handler = async (req, res) => {
           { $set: { students: [...filteredStudents] } }
         );
 
-      // Delete user from Users collection
-      await db.collection("users").deleteOne({ customId: studentId });
+      if (user[0].classrooms.length === 1) {
+        // Delete user from Users collection
+        await db.collection("users").deleteOne({ customId: studentId });
+      } else {
+        // Delete classroom from user
+        const filteredClassrooms = userClassrooms.filter(
+          (classroomCustomId) => classroomCustomId !== classroomId
+        );
+        await db
+          .collection("users")
+          .updateOne(
+            { customId: studentId },
+            { $set: { classrooms: filteredClassrooms } }
+          );
+      }
       client.close();
       return res.status(200).json({ isSuccess: true });
     } catch (error) {
