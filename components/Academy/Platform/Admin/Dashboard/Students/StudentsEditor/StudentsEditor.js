@@ -35,7 +35,7 @@ const StudentsEditor = (props) => {
             <TripleSpinner />
           </div>
         )}
-        {result.isSuccess && !isFetching && <StudentsDataList data={data} />}
+        {result?.isSuccess && !isFetching && <StudentsDataList data={data} />}
       </AnimatePresence>
     </motion.div>
   );

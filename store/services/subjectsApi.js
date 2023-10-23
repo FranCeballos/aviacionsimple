@@ -14,7 +14,15 @@ export const subjectsApi = createApi({
         method: "GET",
       }),
     }),
+    postCreateSubject: build.mutation({
+      query: ({ ...body }) => ({
+        url: "",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllSubjectsTitlesQuery } = subjectsApi;
+export const { useGetAllSubjectsTitlesQuery, usePostCreateSubjectMutation } =
+  subjectsApi;

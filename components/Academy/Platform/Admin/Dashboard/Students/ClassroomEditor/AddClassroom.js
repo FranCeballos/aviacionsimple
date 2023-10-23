@@ -29,7 +29,7 @@ const AddClassroom = ({ keyName }) => {
     }
   };
 
-  if (result.isSuccess) {
+  if (result?.isSuccess) {
     router.push("/academia/iv-brigada-aerea/admin?vista=alumnos", "", {
       scroll: false,
     });

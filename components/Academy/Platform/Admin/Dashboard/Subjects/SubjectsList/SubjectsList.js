@@ -1,17 +1,27 @@
-import React from "react";
-import classes from "./SubjectsList.module.css";
+import React, { forwardRef } from "react";
+import { motion } from "framer-motion";
 import { useGetAllSubjectsTitlesQuery } from "@/store/services/subjectsApi";
+
 import TripleSpinner from "@/components/UI/AnimatedComponents/loaders/TripleSpinner";
 import SubjectItem from "./SubjectItem";
 
-const SubjectsList = (props) => {
-  const { data, isLoading } = useGetAllSubjectsTitlesQuery();
+import classes from "./SubjectsList.module.css";
+
+const SubjectsList = forwardRef((props, ref) => {
+  const { data, isLoading, isFetching } = useGetAllSubjectsTitlesQuery();
   return (
-    <div className={classes.container}>
-      {isLoading ? (
-        <div className={classes["loader__container"]}>
+    <motion.div
+      key="list"
+      layout
+      initial={{ opacity: 0, y: "50px" }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, type: "spring" }}
+      className={classes.container}
+    >
+      {isLoading || isFetching ? (
+        <motion.div className={classes["loader__container"]}>
           <TripleSpinner />
-        </div>
+        </motion.div>
       ) : (
         data.subjects.map((i) => (
           <SubjectItem
@@ -21,8 +31,8 @@ const SubjectsList = (props) => {
           />
         ))
       )}
-    </div>
+    </motion.div>
   );
-};
+});
 
 export default SubjectsList;
