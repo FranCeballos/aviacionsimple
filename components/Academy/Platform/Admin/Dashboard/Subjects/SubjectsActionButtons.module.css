@@ -18,3 +18,8 @@
 .title {
   color: var(--main-dark-color);
 }
+
+.edit-icon__container {
+  height: 35px;
+  width: 35px;
+}

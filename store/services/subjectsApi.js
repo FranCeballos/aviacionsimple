@@ -14,6 +14,12 @@ export const subjectsApi = createApi({
         method: "GET",
       }),
     }),
+    getSubject: build.query({
+      query: ({ subjectId }) => ({
+        url: `/${subjectId}`,
+        method: "GET",
+      }),
+    }),
     postCreateSubject: build.mutation({
       query: ({ ...body }) => ({
         url: "",
@@ -21,8 +27,20 @@ export const subjectsApi = createApi({
         body,
       }),
     }),
+    postEditSubject: build.mutation({
+      query: ({ ...body }) => ({
+        url: "",
+        method: "PUT",
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllSubjectsTitlesQuery, usePostCreateSubjectMutation } =
-  subjectsApi;
+export const {
+  useGetAllSubjectsTitlesQuery,
+  useGetSubjectQuery,
+  useLazyGetSubjectQuery,
+  usePostCreateSubjectMutation,
+  usePostEditSubjectMutation,
+} = subjectsApi;

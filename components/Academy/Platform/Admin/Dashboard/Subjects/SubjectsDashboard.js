@@ -4,15 +4,17 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import SubjectsList from "./SubjectsList/SubjectsList";
 import SubjectsActionButtons from "./SubjectsActionButtons";
+import CreateSubject from "./CreateSubject/CreateSubject";
+import SubjectEditor from "./SubjectEditor/SubjectEditor";
 
 import classes from "./SubjectsDashboard.module.css";
-import CreateSubject from "./CreateSubject/CreateSubject";
 
 const SubjectsDashboard = ({ keyName }) => {
   const {
-    query: { crear },
+    query: { crear, materia: subjectId },
   } = useRouter();
   const isCreateMode = crear === "materia";
+
   return (
     <motion.div
       layout
@@ -29,7 +31,8 @@ const SubjectsDashboard = ({ keyName }) => {
       <AnimatePresence mode="popLayout">
         <SubjectsActionButtons key="action" />
         {isCreateMode && <CreateSubject key="create" />}
-        <SubjectsList key="list" />
+        {!subjectId && <SubjectsList key="list" />}
+        {subjectId && <SubjectEditor />}
       </AnimatePresence>
     </motion.div>
   );

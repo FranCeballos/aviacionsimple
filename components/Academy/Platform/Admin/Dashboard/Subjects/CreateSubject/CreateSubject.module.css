@@ -28,3 +28,15 @@
   border: none;
   cursor: pointer;
 }
+
+.select {
+  width: 86.6%;
+  height: 40px;
+  background-color: #fff;
+  border: 2px solid var(--acad-main-dark);
+  border-radius: 5px;
+  padding: 0 10px;
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+}

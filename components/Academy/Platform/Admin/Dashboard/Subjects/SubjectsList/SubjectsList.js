@@ -9,6 +9,7 @@ import classes from "./SubjectsList.module.css";
 
 const SubjectsList = forwardRef((props, ref) => {
   const { data, isLoading, isFetching } = useGetAllSubjectsTitlesQuery();
+
   return (
     <motion.div
       key="list"
@@ -22,7 +23,7 @@ const SubjectsList = forwardRef((props, ref) => {
         <motion.div className={classes["loader__container"]}>
           <TripleSpinner />
         </motion.div>
-      ) : (
+      ) : data?.subjects.length !== 0 ? (
         data.subjects.map((i) => (
           <SubjectItem
             key={i.customId}
@@ -30,6 +31,8 @@ const SubjectsList = forwardRef((props, ref) => {
             link={`/academia/iv-brigada-aerea/admin?vista=materias&materia=${i.customId}`}
           />
         ))
+      ) : (
+        <p className={classes.empty}>No hay materias creadas.</p>
       )}
     </motion.div>
   );
