@@ -34,6 +34,12 @@ export const subjectsApi = createApi({
         body,
       }),
     }),
+    postDeleteSubject: build.mutation({
+      query: ({ subjectId }) => ({
+        url: `/${subjectId}/delete`,
+        method: "POST",
+      }),
+    }),
   }),
 });
 
@@ -43,4 +49,5 @@ export const {
   useLazyGetSubjectQuery,
   usePostCreateSubjectMutation,
   usePostEditSubjectMutation,
+  usePostDeleteSubjectMutation,
 } = subjectsApi;

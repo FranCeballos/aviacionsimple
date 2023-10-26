@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import {
-  useGetSubjectQuery,
+  useGetAllSubjectsTitlesQuery,
   useLazyGetSubjectQuery,
+  usePostDeleteSubjectMutation,
 } from "@/store/services/subjectsApi";
 import { motion } from "framer-motion";
 import { NotionRenderer } from "react-notion-x";
@@ -12,19 +13,37 @@ import CreateSubject from "../CreateSubject/CreateSubject";
 
 import "react-notion-x/src/styles.css";
 import classes from "./SubjectEditor.module.css";
+import ConfirmButton from "@/components/UI/Buttons/ConfirmButton";
 
 const SubjectEditor = (props) => {
   const {
-    query: { materia: subjectId, modo: mode },
+    query: { materia: subjectId, modo: mode, confirmar: confirm },
+    push,
   } = useRouter();
   const isEditMode = mode === "editar";
-  const [fetchData, { data, isLoading, isFetching }] = useLazyGetSubjectQuery();
+  const isDeleteConfirm = confirm === "borrar";
+  const [
+    fetchData,
+    { data, isLoading: getIsLoading, isFetching: getIsFetching },
+  ] = useLazyGetSubjectQuery();
+  const { refetch } = useGetAllSubjectsTitlesQuery();
+  const [deleteSubject, { isLoading: deleteIsLoading }] =
+    usePostDeleteSubjectMutation();
 
   useEffect(() => {
     if (subjectId) {
       fetchData({ subjectId });
     }
   }, [subjectId]);
+
+  const submitDeleteHandler = async () => {
+    const { data } = await deleteSubject({ subjectId });
+
+    if (data?.isSuccess) {
+      push(`/academia/iv-brigada-aerea/admin?vista=materias`);
+      refetch();
+    }
+  };
 
   return (
     <motion.div
@@ -36,14 +55,34 @@ const SubjectEditor = (props) => {
       className={classes.container}
     >
       {isEditMode && <CreateSubject editMode={true} editData={data?.subject} />}
-      {isLoading || isFetching ? (
+      {getIsFetching || getIsFetching || deleteIsLoading ? (
         <motion.div layout className={classes["loader__container"]}>
           <TripleSpinner />
         </motion.div>
       ) : (
         <motion.div layout className={classes["notion__container"]}>
           {data?.recordMap ? (
-            <NotionRenderer recordMap={data.recordMap} fullPage={true} />
+            <>
+              <NotionRenderer recordMap={data.recordMap} fullPage={true} />
+              <ConfirmButton
+                onClick={
+                  isDeleteConfirm
+                    ? submitDeleteHandler
+                    : () =>
+                        push(
+                          `/academia/iv-brigada-aerea/admin?vista=materias&materia=${subjectId}&confirmar=borrar`,
+                          "",
+                          { scroll: false }
+                        )
+                }
+                style={{ backgroundColor: "rgb(134, 1, 1)" }}
+                title={
+                  isDeleteConfirm
+                    ? "Confirmar borrar materia"
+                    : "Borrar materia"
+                }
+              />
+            </>
           ) : (
             <p className={classes["error-text"]}>
               Es probable que la materia seleccionada no exista o el ID de
