@@ -10,11 +10,17 @@ const Input = forwardRef(
       errorStyle = {},
       style = {},
       type = "text",
+      isColumnStyle = false,
     },
     ref
   ) => {
     return (
-      <div style={containerStyle} className={classes.container}>
+      <div
+        style={containerStyle}
+        className={
+          isColumnStyle ? classes["container-column"] : classes.container
+        }
+      >
         <input
           ref={ref}
           type={type}

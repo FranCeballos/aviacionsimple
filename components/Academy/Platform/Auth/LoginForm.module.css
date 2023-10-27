@@ -10,8 +10,8 @@
   margin-top: 100px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
+  justify-content: flex-start;
+  align-items: center;
   gap: 10px;
 }
 
@@ -22,4 +22,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.error {
+  text-align: center;
+  text-wrap: balance;
+  color: var(--main-error-color);
 }

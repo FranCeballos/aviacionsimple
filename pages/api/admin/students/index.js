@@ -45,8 +45,7 @@ const handle = async (req, res) => {
         customId,
         classrooms: [classroomId],
         isAdmin: false,
-        hashedPassword:
-          "$2a$12$8nXCebHKKScG9/rCxv6L5.iNMRxl4hBufQJA//p0XLAO/vCn2Dy.a",
+        hashedPassword: process.env.DEFAULT_USER_PASSWORD,
       });
       const newUserId = newUser.insertedId;
 

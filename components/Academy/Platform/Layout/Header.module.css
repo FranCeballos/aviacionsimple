@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   height: var(--header-height);
-  padding: 0 8vw;
+  padding: 0 3vw;
   position: fixed;
   top: 0;
   left: 0;
@@ -21,12 +21,16 @@
   align-items: center;
 }
 
+.empty__container {
+  flex: 1 0 0;
+}
+
 .logo__container {
   height: 40%;
-  width: fit-content;
+  flex: 0 0 fit-content;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
@@ -41,4 +45,25 @@
   font-size: 1.2rem;
   margin-left: 10px;
   font-variation-settings: "wght" 800;
+}
+
+.logout__container {
+  flex: 1 0 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button {
+  height: 25px;
+  width: 25px;
+  color: var(--main-dark-color);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 426px) {
+  .container {
+    padding: 0 8vw;
+  }
 }

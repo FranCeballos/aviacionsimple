@@ -1,9 +1,24 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { signOut } from "next-auth/react";
+import { useRouter } from "next/router";
+
+import LogoutIcon from "@/components/UI/Icons/LogoutIcon";
+import ScaleOnHover from "@/components/UI/AnimatedComponents/ScaleOnHover";
+
 import classes from "./Header.module.css";
 
 const Header = (props) => {
+  const { push } = useRouter();
+  const submitLogoutHandler = async () => {
+    const data = await signOut({
+      redirect: false,
+      callbackUrl: "/academia/iv-brigada-aerea",
+    });
+    push(data.url);
+  };
+
   return (
     <motion.header
       initial={{ y: "-60px" }}
@@ -16,6 +31,7 @@ const Header = (props) => {
       className={classes.container}
     >
       <div className={classes.content}>
+        <div className={classes["empty__container"]}></div>
         <div className={classes["logo__container"]}>
           <Image
             className={classes.logo}
@@ -25,8 +41,15 @@ const Header = (props) => {
             height={1648}
             quality={10}
           />
+          <p className={classes["logo__text"]}>Aviación Simple Academy</p>
         </div>
-        <p className={classes["logo__text"]}>Aviación Simple Academy</p>
+        <div className={classes["logout__container"]}>
+          <ScaleOnHover>
+            <button onClick={submitLogoutHandler} className={classes.button}>
+              <LogoutIcon />
+            </button>
+          </ScaleOnHover>
+        </div>
       </div>
     </motion.header>
   );

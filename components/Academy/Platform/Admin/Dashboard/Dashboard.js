@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import StudentsDashboard from "./Students/StudentsDashboard";
 import { AnimatePresence } from "framer-motion";
 import SubjectsDashboard from "./Subjects/SubjectsDashboard";
+
 const Dashboard = (props) => {
   const {
     query: { vista },

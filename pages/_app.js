@@ -2,10 +2,14 @@ import "@/styles/globals.css";
 import { Josefin_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { Provider } from "react-redux";
+import { SessionProvider } from "next-auth/react";
 import { store } from "@/store/store";
 const josefinSans = Josefin_Sans({ subsets: ["latin"] });
 
-export default function App({ Component, pageProps }) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   return (
     <>
       <style jsx global>{`
@@ -13,9 +17,11 @@ export default function App({ Component, pageProps }) {
           font-family: ${josefinSans.style.fontFamily};
         }
       `}</style>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
+      <SessionProvider session={session}>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      </SessionProvider>
       <Analytics />
     </>
   );
