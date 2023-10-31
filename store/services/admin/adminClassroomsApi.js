@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const classroomsApi = createApi({
-  reducerPath: "classroomsApi",
+export const adminClassroomsApi = createApi({
+  reducerPath: "adminClassroomsApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "/api/admin/classrooms",
   }),
@@ -36,4 +36,4 @@ export const {
   useLazyGetClassroomQuery,
   usePostClassroomMutation,
   useTransferClassroomMutation,
-} = classroomsApi;
+} = adminClassroomsApi;

@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import CheckCircleIcon from "@/components/UI/Icons/CheckCircleIcon";
 import classes from "./AddStudent.module.css";
 import Input from "@/components/UI/Forms/Inputs/Input";
-import { usePostStudentMutation } from "@/store/services/studentsApi";
+import { usePostStudentMutation } from "@/store/services/admin/adminStudentsApi";
 import { useRouter } from "next/router";
 import CreateDotsLoader from "@/components/UI/AnimatedComponents/loaders/CreateDotsLoader";
-import { useLazyGetClassroomQuery } from "@/store/services/classroomsApi";
+import { useLazyGetClassroomQuery } from "@/store/services/admin/adminClassroomsApi";
 import ScaleOnHover from "@/components/UI/AnimatedComponents/ScaleOnHover";
 
 const AddStudent = (props) => {

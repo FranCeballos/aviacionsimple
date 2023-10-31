@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { useRouter } from "next/router";
-import { useLazyGetClassroomQuery } from "@/store/services/classroomsApi";
+import { useLazyGetClassroomQuery } from "@/store/services/admin/adminClassroomsApi";
 import {
   usePatchStudentMutation,
   usePostResetPasswordMutation,
-} from "@/store/services/studentsApi";
+} from "@/store/services/admin/adminStudentsApi";
 
 import Input from "@/components/UI/Forms/Inputs/Input";
 import ConfirmButton from "@/components/UI/Buttons/ConfirmButton";

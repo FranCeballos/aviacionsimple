@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
-import { useGetSubjectQuery } from "@/store/services/subjectsApi";
+import { useGetSubjectQuery } from "@/store/services/admin/adminSubjectsApi";
 
 import PlusCircleIcon from "@/components/UI/Icons/PlusCircleIcon";
 import XCircleIcon from "@/components/UI/Icons/XCircleIcon";

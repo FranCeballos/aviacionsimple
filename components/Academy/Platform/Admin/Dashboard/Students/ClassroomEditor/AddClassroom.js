@@ -7,7 +7,7 @@ import classes from "./AddClassroom.module.css";
 import {
   useGetAllClassroomsQuery,
   usePostClassroomMutation,
-} from "@/store/services/classroomsApi";
+} from "@/store/services/admin/adminClassroomsApi";
 import { useRouter } from "next/router";
 import CreateDots from "@/components/UI/AnimatedComponents/loaders/CreateDotsLoader";
 import CreateDotsLoader from "@/components/UI/AnimatedComponents/loaders/CreateDotsLoader";

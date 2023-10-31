@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  max-width: 1300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.title {
+  font-size: 2.5rem;
+  text-align: start;
+  color: var(--main-dark-color);
+  margin-bottom: 20px;
+}

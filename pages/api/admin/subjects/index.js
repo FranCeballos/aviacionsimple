@@ -68,7 +68,7 @@ const handler = async (req, res) => {
         customId,
         title: subjectName,
         notionId,
-        classrooms: classroomValue,
+        gradeNum: classroomValue,
       });
 
       client.close();
@@ -112,7 +112,7 @@ const handler = async (req, res) => {
           $set: {
             title: subjectName,
             customId: customId,
-            classrooms: classroomValue,
+            gradeNum: classroomValue,
             notionId,
           },
         }

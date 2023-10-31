@@ -30,8 +30,8 @@ export const benefitsData = [
     description:
       "Adentrate en la teoría aeronáutica. No importa si recién comenzás o si ya llevás una carrera en la aviación.",
     imageSrc: "academy.webp",
-    whatsappLink: null,
-    linkTitle: "Próximamente",
+    whatsappLink: "academia",
+    linkTitle: "Ingresá",
   },
   {
     icon: <ClipboardDocumentCheckIcon />,

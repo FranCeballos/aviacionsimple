@@ -5,7 +5,7 @@ import Gallery from "@/components/RootPage/Gallery/Gallery";
 import Hero from "@/components/RootPage/Hero";
 import { imagesURLs } from "@/data/data";
 
-export default function Home() {
+export default function Home({ images }) {
   return (
     <>
       <HeadComponent
@@ -17,9 +17,17 @@ export default function Home() {
         <Benefits />
         <Gallery
           title="Marcelino Ceballos. Más de 30 años en la aviación."
-          imagesURLs={imagesURLs}
+          imagesURLs={images}
         />
       </MainLayout>
     </>
   );
 }
+
+export const getStaticProps = () => {
+  return {
+    props: {
+      images: imagesURLs,
+    },
+  };
+};

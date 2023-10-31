@@ -5,7 +5,7 @@ import ScaleOnHover from "@/components/UI/AnimatedComponents/ScaleOnHover";
 import {
   useGetAllClassroomsQuery,
   useTransferClassroomMutation,
-} from "@/store/services/classroomsApi";
+} from "@/store/services/admin/adminClassroomsApi";
 import { useRouter } from "next/router";
 import TransferDotsLoader from "@/components/UI/AnimatedComponents/loaders/TransferDotsLoader";
 

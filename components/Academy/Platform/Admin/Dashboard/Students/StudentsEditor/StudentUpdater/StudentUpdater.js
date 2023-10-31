@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./StudentUpdater.module.css";
-import { usePatchStudentMutation } from "@/store/services/studentsApi";
+import { usePatchStudentMutation } from "@/store/services/admin/adminStudentsApi";
 import CreateDotsLoader from "@/components/UI/AnimatedComponents/loaders/CreateDotsLoader";
 import NavButton from "@/components/UI/Buttons/NavButton";
 import { useRouter } from "next/router";

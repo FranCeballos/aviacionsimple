@@ -1,18 +1,11 @@
 import React, { useRef } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import classes from "./BenefitsItem.module.css";
 import ScaleInView from "@/components/UI/AnimatedComponents/ScaleInView";
 import ScaleOnHover from "@/components/UI/AnimatedComponents/ScaleOnHover";
+import Link from "next/link";
 
-const BenefitsItem = ({
-  icon,
-  title,
-  description,
-  imageSrc,
-  linkTitle,
-  whatsappLink,
-}) => {
+const BenefitsItem = ({ icon, title, linkTitle, whatsappLink }) => {
   const ref = useRef(null);
   return (
     <ScaleInView ref={ref}>
@@ -21,9 +14,9 @@ const BenefitsItem = ({
           <div className={classes.icon}>{icon}</div>
           <h3 className={classes.title}>{title}</h3>
           <ScaleOnHover className={classes["link__container"]}>
-            <a className={classes.link} href={whatsappLink}>
+            <Link className={classes.link} href={whatsappLink}>
               {linkTitle}
-            </a>
+            </Link>
           </ScaleOnHover>
         </div>
       </motion.div>

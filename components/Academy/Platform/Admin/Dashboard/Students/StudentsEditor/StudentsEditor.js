@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLazyGetClassroomQuery } from "@/store/services/classroomsApi";
+import { useLazyGetClassroomQuery } from "@/store/services/admin/adminClassroomsApi";
 
 import TripleSpinner from "@/components/UI/AnimatedComponents/loaders/TripleSpinner";
 import StudentsActionButtons from "./StudentsActionButtons";

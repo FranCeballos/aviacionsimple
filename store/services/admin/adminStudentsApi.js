@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const studentsApi = createApi({
-  reducerPath: "studentsApi",
+export const adminStudentsApi = createApi({
+  reducerPath: "adminStudentsApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "/api/admin/students/",
   }),
@@ -59,4 +59,4 @@ export const {
   useCopyStudentToClassroomMutation,
   usePostResetPasswordMutation,
   usePostDeleteStudentMutation,
-} = studentsApi;
+} = adminStudentsApi;

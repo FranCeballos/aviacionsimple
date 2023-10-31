@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
 // API
-import { useGetAllClassroomsQuery } from "@/store/services/classroomsApi";
+import { useGetAllClassroomsQuery } from "@/store/services/admin/adminClassroomsApi";
 
 // Components
 import PlusCircleIcon from "@/components/UI/Icons/PlusCircleIcon";

@@ -4,7 +4,7 @@ import {
   useGetAllSubjectsTitlesQuery,
   useLazyGetSubjectQuery,
   usePostDeleteSubjectMutation,
-} from "@/store/services/subjectsApi";
+} from "@/store/services/admin/adminSubjectsApi";
 import { motion } from "framer-motion";
 import { NotionRenderer } from "react-notion-x";
 

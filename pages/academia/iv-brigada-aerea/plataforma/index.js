@@ -4,6 +4,8 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 import HeadComponent from "@/components/Head/Head";
 import MainLayout from "@/components/Academy/Platform/Layout/MainLayout";
+import StudentDashboard from "@/components/Academy/Platform/StudentDashboard/StudentDashboard";
+
 const PlatformPage = (props) => {
   return (
     <>
@@ -11,7 +13,9 @@ const PlatformPage = (props) => {
         title="Aviación Simple Academy"
         description="Entrá al mundo de la aviación aeronautica."
       />
-      <MainLayout></MainLayout>
+      <MainLayout>
+        <StudentDashboard />
+      </MainLayout>
     </>
   );
 };

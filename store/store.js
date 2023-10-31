@@ -1,20 +1,23 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import { classroomsApi } from "./services/classroomsApi";
-import { studentsApi } from "./services/studentsApi";
+import { adminClassroomsApi } from "./services/admin/adminClassroomsApi";
+import { adminStudentsApi } from "./services/admin/adminStudentsApi";
+import { adminSubjectsApi } from "./services/admin/adminSubjectsApi";
+import { platformStudentsApi } from "./services/students/platformStudentsApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { subjectsApi } from "./services/subjectsApi";
 
 export const store = configureStore({
   reducer: {
-    [classroomsApi.reducerPath]: classroomsApi.reducer,
-    [studentsApi.reducerPath]: studentsApi.reducer,
-    [subjectsApi.reducerPath]: subjectsApi.reducer,
+    [adminClassroomsApi.reducerPath]: adminClassroomsApi.reducer,
+    [adminStudentsApi.reducerPath]: adminStudentsApi.reducer,
+    [adminSubjectsApi.reducerPath]: adminSubjectsApi.reducer,
+    [platformStudentsApi.reducerPath]: platformStudentsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
-      .concat(classroomsApi.middleware)
-      .concat(studentsApi.middleware)
-      .concat(subjectsApi.middleware),
+      .concat(adminClassroomsApi.middleware)
+      .concat(adminStudentsApi.middleware)
+      .concat(adminSubjectsApi.middleware)
+      .concat(platformStudentsApi.middleware),
 });
 
 setupListeners(store.dispatch);

@@ -2,14 +2,14 @@ import React, { useRef } from "react";
 import {
   useGetAllClassroomsQuery,
   useLazyGetClassroomQuery,
-} from "@/store/services/classroomsApi";
+} from "@/store/services/admin/adminClassroomsApi";
 import ConfirmButton from "@/components/UI/Buttons/ConfirmButton";
 import classes from "./StudentTransferForm.module.css";
 import {
   useCopyStudentToClassroomMutation,
   usePostDeleteStudentMutation,
   useTransferStudentMutation,
-} from "@/store/services/studentsApi";
+} from "@/store/services/admin/adminStudentsApi";
 import { useRouter } from "next/router";
 import TransferDotsLoader from "@/components/UI/AnimatedComponents/loaders/TransferDotsLoader";
 

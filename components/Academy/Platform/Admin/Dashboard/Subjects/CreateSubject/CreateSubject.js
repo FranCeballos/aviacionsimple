@@ -4,7 +4,7 @@ import {
   useGetAllSubjectsTitlesQuery,
   usePostCreateSubjectMutation,
   usePostEditSubjectMutation,
-} from "@/store/services/subjectsApi";
+} from "@/store/services/admin/adminSubjectsApi";
 import { useRouter } from "next/router";
 
 import Input from "@/components/UI/Forms/Inputs/Input";
@@ -45,7 +45,7 @@ const CreateSubject = forwardRef(({ editMode, editData = undefined }, ref) => {
     };
     titleRef.current.value = subject.title;
     notionIdRef.current.value = subject.notionId;
-    classroomRef.current.value = subject.classrooms;
+    classroomRef.current.value = subject.gradeNum;
   };
 
   useEffect(() => {

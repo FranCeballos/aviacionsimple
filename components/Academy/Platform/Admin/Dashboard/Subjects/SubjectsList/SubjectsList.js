@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
-import { useGetAllSubjectsTitlesQuery } from "@/store/services/subjectsApi";
+import { useGetAllSubjectsTitlesQuery } from "@/store/services/admin/adminSubjectsApi";
 
 import TripleSpinner from "@/components/UI/AnimatedComponents/loaders/TripleSpinner";
 import SubjectItem from "./SubjectItem";
