@@ -1,13 +1,14 @@
 import React from "react";
 import classes from "./Footer.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = (props) => {
   return (
     <footer className={classes.container}>
       <div className={classes.content}>
         <div className={classes.empty}></div>
-        <div className={classes["logo__container"]}>
+        <Link href="/academia" className={classes["logo__container"]}>
           <Image
             className={classes.logo}
             src="/assets/img/logos/logo.webp"
@@ -16,7 +17,7 @@ const Footer = (props) => {
             height={1648}
             quality={10}
           />
-        </div>
+        </Link>
         <a
           className={classes["developer__link"]}
           href="https://franciscoceballos.dev"

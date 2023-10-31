@@ -17,6 +17,7 @@
     "mongodb": "^6.1.0",
     "next": "latest",
     "next-auth": "^4.23.2",
+    "nextjs-progressbar": "^0.0.16",
     "notion-client": "^6.16.0",
     "react": "latest",
     "react-dom": "latest",
