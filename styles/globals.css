@@ -68,3 +68,23 @@ select {
 .spinner {
   display: none !important;
 }
+
+.not-found__container {
+  width: 100%;
+  height: calc(100vh - 60px);
+  display: grid;
+  place-content: center;
+  margin-top: 60px;
+}
+
+.not-found__link {
+  text-align: center;
+  background-color: var(--main-dark-color);
+  width: fit-content;
+  place-self: center;
+  padding: 15px 20px;
+  color: #fff;
+  border-radius: 10px;
+  margin-top: 30px;
+  font-size: 1.1rem;
+}
