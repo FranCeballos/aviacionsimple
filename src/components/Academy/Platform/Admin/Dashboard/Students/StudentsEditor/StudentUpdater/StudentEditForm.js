@@ -109,7 +109,7 @@ const StudentEditForm = ({ data }) => {
       <ConfirmButton
         onClick={submitUpdateHandler}
         style={{ backgroundColor: "rgb(20, 128, 118)", marginTop: "10px" }}
-        title="Actualizar"
+        title="Guardar"
       />
     </>
   );

@@ -134,7 +134,7 @@ const StudentTransferForm = (props) => {
           <ConfirmButton
             onClick={submitCopyHandler}
             style={{ backgroundColor: "#113946", marginTop: "10px" }}
-            title="Añadir a curso"
+            title="Copiar"
           />
           <ConfirmButton
             onClick={submitTransferHandler}
