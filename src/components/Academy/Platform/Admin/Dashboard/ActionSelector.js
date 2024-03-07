@@ -1,9 +1,11 @@
 import React from "react";
-import Action from "./Action";
-import classes from "./ActionSelector.module.css";
-import UsersIcon from "@/src/components/UI/Icons/UsersIcon";
-import BookIcon from "@/src/components/UI/Icons/BookIcon";
 import { useRouter } from "next/router";
+
+import Action from "./Action";
+import { HiUsers } from "react-icons/hi2";
+import { FaBookOpen } from "react-icons/fa";
+import { IoNotifications } from "react-icons/io5";
+import classes from "./ActionSelector.module.css";
 
 const ActionSelector = (props) => {
   const {
@@ -14,14 +16,20 @@ const ActionSelector = (props) => {
       <Action
         title="Alumnos y Cursos"
         link="/academia/iv-brigada-aerea/admin?vista=alumnos"
-        icon={<UsersIcon />}
+        icon={<HiUsers size={25} color="" />}
         isActive={vista === "alumnos"}
       />
       <Action
         title="Materias"
         link="/academia/iv-brigada-aerea/admin?vista=materias"
-        icon={<BookIcon />}
+        icon={<FaBookOpen size={25} color="" />}
         isActive={vista === "materias"}
+      />
+      <Action
+        title="Notificaciones"
+        link="/academia/iv-brigada-aerea/admin?vista=notificaciones"
+        icon={<IoNotifications size={25} color="" />}
+        isActive={vista === "notificaciones"}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  flex: 1 0 200px;
   height: 100%;
   background-color: #fff;
   padding: 5px;
@@ -10,21 +10,24 @@
   border-radius: 10px;
   border: 0;
   cursor: pointer;
+  transition: 0.2s all ease-out;
 }
 
-.icon {
-  display: none;
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-  color: var(--main-dark-color);
-  transition: all 0.3s ease-out;
+.container:hover {
+  background-color: var(--main-dark-color);
+  color: white;
 }
 
 .title {
   text-align: center;
   font-size: 1.3rem;
   color: var(--main-dark-color);
+  margin-left: 8px;
+  transition: 0.2s all ease-out;
+}
+
+.container:hover .title {
+  color: white;
 }
 
 .active {

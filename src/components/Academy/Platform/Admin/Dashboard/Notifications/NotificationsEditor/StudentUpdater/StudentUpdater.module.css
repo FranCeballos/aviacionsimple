@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  height: fit-content;
+  padding: 20px;
+  cursor: default;
+  background-color: var(--main-dark-color);
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.nav__container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

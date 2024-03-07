@@ -1,21 +1,21 @@
 .container {
   width: 100%;
-  min-height: 80vh;
+  height: 80vh;
   border: 5px solid var(--acad-main-dark);
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.216);
   background-color: #fff;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 450px 600px;
+  grid-template-rows: 1fr 1fr;
   padding: 30px;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 350px 1fr;
     grid-template-rows: 1fr;
   }
 }

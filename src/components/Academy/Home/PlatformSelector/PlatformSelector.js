@@ -7,10 +7,10 @@ import ScaleOnHover from "@/src/components/UI/AnimatedComponents/ScaleOnHover";
 const PlatformSelector = (props) => {
   return (
     <SectionWrapper>
-      <h2 className={classes.title}>Ingresá</h2>
+      <h2 className={classes.title}>Plataformas</h2>
       <ScaleOnHover>
         <Link className={classes.link} href="/academia/iv-brigada-aerea">
-          Plataforma Educativa IV Brigada Aérea
+          IV Brigada Aérea
         </Link>
       </ScaleOnHover>
     </SectionWrapper>
