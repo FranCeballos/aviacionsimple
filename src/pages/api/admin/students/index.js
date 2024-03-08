@@ -32,7 +32,7 @@ const handle = async (req, res) => {
         throw new Error(`El usuario "${firstName} ${lastName}" ya existe.`);
       }
     } catch (error) {
-      client.close();
+      client?.close();
       return res.status(422).json({ error: error.message });
     }
 
@@ -68,7 +68,7 @@ const handle = async (req, res) => {
         .status(200)
         .json({ message: "User created", newUserId, isSuccess: true });
     } catch (error) {
-      client.close();
+      client?.close();
       return res.status(500).json({ error: error.message });
     }
   }
