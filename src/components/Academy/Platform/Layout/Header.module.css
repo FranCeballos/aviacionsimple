@@ -81,6 +81,10 @@
   cursor: pointer;
 }
 
+.mobile__container {
+  margin-right: 5px;
+}
+
 @media screen and (min-width: 426px) {
   .content {
     gap: 35px;
