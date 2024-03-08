@@ -19,7 +19,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 35px;
+  gap: 10px;
 }
 
 .empty__container {
@@ -64,7 +64,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 50px;
+  gap: 15px;
 }
 
 .item__container {
@@ -79,4 +79,14 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+@media screen and (min-width: 426px) {
+  .content {
+    gap: 35px;
+  }
+
+  .list {
+    gap: 35px;
+  }
 }

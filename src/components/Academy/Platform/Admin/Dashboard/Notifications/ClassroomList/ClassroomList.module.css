@@ -25,6 +25,8 @@
 
 .title {
   color: var(--main-dark-color);
+  font-size: 3rem;
+  padding-top: 3px;
 }
 .subtitle {
   font-size: 1.5rem;

@@ -9,10 +9,10 @@ import ScaleOnHover from "@/src/components/UI/AnimatedComponents/ScaleOnHover";
 
 import classes from "./Header.module.css";
 import Link from "next/link";
+import { IoNotifications } from "react-icons/io5";
 
 const Header = (props) => {
-  const { data } = useSession();
-  console.log(data);
+  const { data: userData } = useSession();
   const { push } = useRouter();
   const submitLogoutHandler = async () => {
     const data = await signOut({
@@ -47,21 +47,27 @@ const Header = (props) => {
         </div>
         <nav className={classes.nav}>
           <ul className={classes.list}>
-            <li className={classes["item__container"]}>
-              <Link href="/academia/iv-brigada-aerea/admin?vista=alumnos">
-                Alumnos y Cursos
-              </Link>
-            </li>
-            <li className={classes["item__container"]}>
-              <Link href="/academia/iv-brigada-aerea/admin?vista=materias">
-                Materias
-              </Link>
-            </li>
-            <li className={classes["item__container"]}>
-              <Link href="/academia/iv-brigada-aerea/admin?vista=notificaciones">
-                Notificaciones
-              </Link>
-            </li>
+            {userData?.user?.isAdmin ? (
+              <>
+                <li className={classes["item__container"]}>
+                  <Link href="/academia/iv-brigada-aerea/admin?vista=alumnos">
+                    Alumnos y Cursos
+                  </Link>
+                </li>
+                <li className={classes["item__container"]}>
+                  <Link href="/academia/iv-brigada-aerea/admin?vista=materias">
+                    Materias
+                  </Link>
+                </li>
+                <li className={classes["item__container"]}>
+                  <Link href="/academia/iv-brigada-aerea/admin?vista=notificaciones">
+                    Notificaciones
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <></>
+            )}
           </ul>
         </nav>
         <div className={classes["logout__container"]}>

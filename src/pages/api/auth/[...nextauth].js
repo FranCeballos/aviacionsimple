@@ -11,6 +11,7 @@ export const authOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
+        token.classrooms = user.classrooms;
         token.customId = user.customId;
         token.fullName = `${user.firstName} ${user.lastName}`;
         token.isAdmin = user.isAdmin;
@@ -19,6 +20,7 @@ export const authOptions = {
     },
     async session({ session, token }) {
       session.user = {
+        classrooms: token.classrooms,
         customId: token.customId,
         fullName: token.fullName,
         email: token.email,
