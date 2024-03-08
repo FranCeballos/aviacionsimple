@@ -46,7 +46,10 @@ const StudentDashboard = (props) => {
             >
               <SubjectsList variant={viewVariants} />
             </DashboardSectionWrapper>
-            <DashboardSectionWrapper title="Notificaciones">
+            <DashboardSectionWrapper
+              title="Notificaciones"
+              style={{ alignSelf: "flex-end" }}
+            >
               <NotificationsList variant={viewVariants} />
             </DashboardSectionWrapper>
           </div>
