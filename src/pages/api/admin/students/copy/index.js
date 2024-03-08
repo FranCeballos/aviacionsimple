@@ -40,7 +40,6 @@ const handler = async (req, res) => {
         .toArray();
 
       if (!user || !prevClassroom || !nextClassroom) {
-        client.close();
         throw new Error(`Missing value for "user", "prevClass `);
       }
 

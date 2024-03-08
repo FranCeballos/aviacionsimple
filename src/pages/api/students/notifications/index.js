@@ -34,8 +34,10 @@ const handler = async (req, res) => {
         .limit(30)
         .toArray();
 
+      client.close();
       return res.status(200).json({ notifications });
     } catch (error) {
+      client?.close();
       return res.status(500).json({ message: error.message });
     }
   }
