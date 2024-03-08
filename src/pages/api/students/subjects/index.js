@@ -1,14 +1,14 @@
 import { connectToDatabase } from "@/src/lib/db";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../auth/[...nextauth]";
 
 const handler = async (req, res) => {
   if (req.method === "GET") {
-    const { studentId } = req.query;
+    const session = await getServerSession(req, res, authOptions);
+    const studentId = session?.user?.customId;
 
-    console.log(studentId);
-    if (!studentId) {
-      return res
-        .status(422)
-        .json({ error: "Missing valid studentId query in URL." });
+    if (!session || !studentId) {
+      return res.status(401).json({ error: "No session found." });
     }
 
     // Connect to db

@@ -7,11 +7,17 @@ export const platformStudentsApi = createApi({
   }),
   endpoints: (build) => ({
     getSubjects: build.query({
-      query: ({ customStudentId }) => ({
-        url: `${customStudentId}/subjects`,
+      query: () => ({
+        url: "/subjects",
+      }),
+    }),
+    getNotifications: build.query({
+      query: () => ({
+        url: "/notifications",
       }),
     }),
   }),
 });
 
-export const { useLazyGetSubjectsQuery } = platformStudentsApi;
+export const { useLazyGetSubjectsQuery, useLazyGetNotificationsQuery } =
+  platformStudentsApi;

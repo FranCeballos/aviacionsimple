@@ -9,11 +9,7 @@ const Action = ({ title, icon, link, isActive }) => {
       href={link}
       scroll={false}
     >
-      <div
-        className={`${classes.icon} ${isActive ? classes.activeContent : ""}`}
-      >
-        {icon}
-      </div>
+      {icon}
       <h2
         className={`${classes.title} ${isActive ? classes.activeContent : ""}`}
       >

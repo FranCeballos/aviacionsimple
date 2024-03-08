@@ -1,6 +1,5 @@
 .container {
-  flex: 0 1 200px;
-  aspect-ratio: 1;
+  flex: 1 1 200px;
   border-radius: 10px;
   overflow: hidden;
 }

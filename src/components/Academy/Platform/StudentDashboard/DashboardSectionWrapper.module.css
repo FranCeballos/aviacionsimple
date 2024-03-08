@@ -1,0 +1,13 @@
+.container {
+  background-color: rgb(243, 243, 243);
+  box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.237);
+  padding: 20px;
+  border-radius: 30px;
+  flex: 1 0 300px;
+}
+
+.title {
+  color: var(--main-dark-color);
+  font-size: 2rem;
+  margin-bottom: 20px;
+}

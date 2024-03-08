@@ -7,6 +7,8 @@ import SubjectsList from "./SubjectList/SubjectList";
 import SubjectViewer from "./SubjectViewer/SubjectViewer";
 
 import classes from "./StudentDashboard.module.css";
+import DashboardSectionWrapper from "./DashboardSectionWrapper";
+import NotificationsList from "./NotificationsList/NotificationsList";
 
 const viewVariants = {
   hide: { opacity: 0 },
@@ -35,7 +37,23 @@ const StudentDashboard = (props) => {
             Hola, {fullName}.
           </motion.h1>
         )}
-        {!subjectId && <SubjectsList variant={viewVariants} />}
+        {!subjectId && (
+          <div className={classes["content__container"]}>
+            <DashboardSectionWrapper
+              title="Materias"
+              variant={viewVariants}
+              style={{ alignSelf: "flex-end" }}
+            >
+              <SubjectsList variant={viewVariants} />
+            </DashboardSectionWrapper>
+            <DashboardSectionWrapper
+              title="Notificaciones"
+              style={{ alignSelf: "flex-end" }}
+            >
+              <NotificationsList variant={viewVariants} />
+            </DashboardSectionWrapper>
+          </div>
+        )}
         {subjectId && <SubjectViewer variant={viewVariants} />}
       </AnimatePresence>
     </div>

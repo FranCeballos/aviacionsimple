@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.title {
+  font-size: 1.2rem;
+  background-color: var(--main-dark-color);
+  padding: 10px 20px;
+  border-radius: 15px;
+  color: white;
+}
