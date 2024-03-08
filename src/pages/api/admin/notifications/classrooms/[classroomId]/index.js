@@ -2,7 +2,7 @@ import { connectToDatabase } from "@/src/lib/db";
 const handler = async (req, res) => {
   if (req.method === "GET") {
     const { classroomId } = req.query;
-    console.log(classroomId);
+
     // Connect to db
     let client;
     try {

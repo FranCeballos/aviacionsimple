@@ -63,7 +63,7 @@ const handler = async (req, res) => {
       client.close();
       return res.status(200).json({ isSuccess: true });
     } catch (error) {
-      client.close();
+      client?.close();
       return res.status(500).json({ error: error.message });
     }
   }
