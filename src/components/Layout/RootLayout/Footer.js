@@ -22,8 +22,7 @@ const Footer = (props) => {
           href="https://franciscoceballos.dev"
           target="_blank"
         >
-          Diseño y programación por <br />
-          Francisco Ceballos
+          Powered by Francisco Ceballos Dev
         </a>
       </div>
     </footer>
