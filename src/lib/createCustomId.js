@@ -1,3 +1,3 @@
 export default (id) => {
-  return id.trim().toLowerCase().replaceAll(" ", "-");
+  return id?.trim()?.toLowerCase()?.replaceAll(" ", "-");
 };
