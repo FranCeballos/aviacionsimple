@@ -38,9 +38,7 @@ const handler = async (req, res) => {
         error: 'Missing "subjectName", "notionId" or "classroomValue" value.',
       });
     }
-    console.log(subjectName);
     const customId = createCustomId(subjectName);
-    console.log(customId);
 
     // Connect to db
     let client;
